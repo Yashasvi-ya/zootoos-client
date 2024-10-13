@@ -79,8 +79,11 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
+
+      
       <div className="navbar-end">
         <div className="flex justify-center items-center">
+
           {user ? (
             <>
               <div className="dropdown dropdown-end">
@@ -156,7 +159,10 @@ const Navbar = () => {
             </>
           ) : (
             <div>
-              <Link to={'/signin'}> <button className="text-xl font-semibold">Sign In</button> </Link>
+              <Link to={"/signin"}>
+                {" "}
+                <button className="btn btn-outline btn-success ">Sign In</button>{" "}
+              </Link>
             </div>
           )}
         </div>
