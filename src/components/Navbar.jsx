@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [user, setUser] = useState(false);
-
   return (
     <div className="navbar bg-base-200">
       <div className="navbar-start">
