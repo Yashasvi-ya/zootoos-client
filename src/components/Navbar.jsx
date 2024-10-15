@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [user, setUser] = useState(false);
+  const {currentUser} = useSelector((state) => state)
+
   return (
     <div className="navbar bg-base-200">
       <div className="navbar-start">
@@ -83,7 +85,7 @@ const Navbar = () => {
       <div className="navbar-end">
         <div className="flex justify-center items-center">
 
-          {user ? (
+          {currentUser ? (
             <>
               <div className="dropdown dropdown-end">
                 <div
@@ -142,10 +144,10 @@ const Navbar = () => {
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                 >
                   <li>
-                    <a className="justify-between">
+                    <Link to={'/profile'} className="justify-between">
                       Profile
                       <span className="badge">New</span>
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <a>Orders</a>

@@ -21,7 +21,7 @@ const Home = () => {
         </Link>
       </div>
       <h1 className="font-bold text-4xl">Hello World</h1>
-      <button class="btn btn-primary">Primary</button>
+      <button className="btn btn-primary">Primary</button>
     </>
   );
 };

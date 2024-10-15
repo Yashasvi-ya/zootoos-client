@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Products from "./pages/Products";
 import ProductItem from "./pages/ProductItem";
+import Profile from "./pages/Profile";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/products" element={<Products />} />
         <Route path="/productitem" element={<ProductItem/>} />
+        <Route path="/profile" element={<Profile/>} />
       </Routes>
       <Footer/>
       <Toaster/>
