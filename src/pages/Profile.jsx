@@ -10,6 +10,10 @@ const Profile = () => {
   const navigate = useNavigate();
 
 
+  const handleClick = () => {
+    navigate('/addproduct')
+  } 
+
     const handleSignOut = async () => {
         try {
             const res = await fetch('/api/user/signout',{
@@ -44,6 +48,14 @@ const Profile = () => {
             </p>
             <button className="btn btn-primary">Update Profile</button>
             <button className="btn btn-primary" onClick={handleSignOut}>Sign Out</button>
+
+            {
+              currentUser.isAdmin && (
+                <div>
+                  <button className="btn btn-primary" onClick={handleClick}>Add Product</button>
+                </div>
+              )
+            }
           </div>
         </div>
       </div>

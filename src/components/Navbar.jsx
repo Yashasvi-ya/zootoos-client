@@ -1,10 +1,31 @@
 import React from "react";
 import toast from "react-hot-toast";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { signOutSuccess } from "../redux/user/userSlice";
 
 const Navbar = () => {
   const {currentUser} = useSelector((state) => state)
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+
+    const handleSignOut = async () => {
+        try {
+            const res = await fetch('/api/user/signout',{
+                method: 'POST',
+            })
+            const data = res.json();
+            if(res.ok){
+                dispatch((signOutSuccess()));
+                navigate('')
+            }
+            else console.log(data.message)
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
 
   return (
     <div className="navbar bg-base-200">
@@ -31,21 +52,21 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a>Item 1</a>
+              <button>Item 1</button>
             </li>
             <li>
-              <a>Parent</a>
+              <button>Parent</button>
               <ul className="p-2">
                 <li>
-                  <a>Submenu 1</a>
+                  <button>Submenu 1</button>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <button>Submenu 2</button>
                 </li>
               </ul>
             </li>
             <li>
-              <a>Item 3</a>
+              <button>Item 3</button>
             </li>
           </ul>
         </div>
@@ -60,23 +81,23 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Item 1</a>
+            <button>Item 1</button>
           </li>
           <li>
             <details>
               <summary>Parent</summary>
               <ul className="p-2">
                 <li>
-                  <a>Submenu 1</a>
+                  <button>Submenu 1</button>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <button>Submenu 2</button>
                 </li>
               </ul>
             </details>
           </li>
           <li>
-            <a>Item 3</a>
+            <button>Item 3</button>
           </li>
         </ul>
       </div>
@@ -150,10 +171,10 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <a>Orders</a>
+                    <button>Orders</button>
                   </li>
                   <li>
-                    <a>Logout</a>
+                    <button onClick={handleSignOut}>Logout</button>
                   </li>
                 </ul>
               </div>

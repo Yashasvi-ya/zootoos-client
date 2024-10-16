@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useParams } from "react-router-dom";
 
 const ProductItem = () => {
+  const [products, setProducts] = useState([]);
+  const { productId } = useParams();
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await fetch(
+        `/api/product/getproducts?productId=${productId}`,
+        {
+          method: "GET",
+        }
+      );
+      const data = await res.json();
+      if (res.ok) {
+        setProducts(data.products[0]);
+        console.log(products);
+      }
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <>
       {/* <div className="hero bg-base-200 min-h-screen">
@@ -72,13 +93,13 @@ const ProductItem = () => {
           </div>
         </div>
         <div className="w-1/2 flex flex-col gap-5">
-          <h1 className="text-5xl font-bold">Product Name</h1>
+          <h1 className="text-5xl font-bold">{products.name}</h1>
           <div className="divider"></div>
-          <h2 className="text-2xl font-semibold">Price : Rs. 999</h2>
-          <p className="py-3">This Tshirt is Awesome !!</p>
+          <h2 className="text-2xl font-semibold">Rs. {products.price}</h2>
+          <p className="py-3">{products.description}</p>
 
           <div className="flex flex-row gap-3">
-            <span className="text-center">
+            {/* <span className="text-center">
               <p>S</p>
               <input
                 type="radio"
@@ -98,7 +119,17 @@ const ProductItem = () => {
             <span className="text-center">
               <p>XL</p>
               <input type="radio" name="radio-1" className="radio" />
-            </span>
+            </span> */}
+
+            {products.sizes && products.sizes.map((size, index) => {
+              return (
+                <span className="text-center" key={index}>
+                  <p>{size}</p>
+                  <input type="radio" name="radio-1" className="radio" />
+                </span>
+              );
+            })}
+
           </div>
 
           <div className="flex items-center gap-3">
@@ -113,7 +144,10 @@ const ProductItem = () => {
               <option>5</option>
             </select>
           </div>
-          <button className="w-1/4 btn btn-secondary" onClick={() => toast.success("Product addded to Cart")}>
+          <button
+            className="w-1/4 btn btn-secondary"
+            onClick={() => toast.success("Product addded to Cart")}
+          >
             Add to Cart
           </button>
 
