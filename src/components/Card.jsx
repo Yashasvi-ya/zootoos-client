@@ -6,11 +6,12 @@ const Card = (props) => {
   const imageUrl = product.imageUrl
   return (
     <Link to={`/productitem/${product._id}`}>
-      <div className="card bg-base-100 w-64 shadow-xl">
+      <div className="card bg-base-100 w-64 shadow-xl h-96">
         <figure>
           <img
             src={imageUrl}
             alt="alt image"
+            className="object-contain h-full w-full"
           />
         </figure>
         <div className="card-body">

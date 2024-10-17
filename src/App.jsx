@@ -10,6 +10,7 @@ import Products from "./pages/Products";
 import ProductItem from "./pages/ProductItem";
 import Profile from "./pages/Profile";
 import AddProduct from "./pages/AddProduct";
+import Cart from "./pages/Cart";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/productitem/:productId" element={<ProductItem/>} />
         <Route path="/addproduct" element={<AddProduct/>} />
         <Route path="/profile" element={<Profile/>} />
