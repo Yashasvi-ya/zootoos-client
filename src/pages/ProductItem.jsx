@@ -21,7 +21,6 @@ const ProductItem = () => {
       if (res.ok) {
         setProducts(data.products[0]);
         setFormData((prev) => ({...prev, name : data.products[0].name, price : data.products[0].price}))
-        console.log(products);
       }
     };
     fetchProducts();

@@ -15,7 +15,6 @@ const Home = () => {
     const data = await res.json();
     if(res.ok){
       setProducts(data.products)
-      console.log(products)
     } 
   }
   fetchProducts();
@@ -29,7 +28,6 @@ const Home = () => {
         <div className="flex justify-center items-center flex-row flex-wrap gap-5 m-3 p-3">
         {
             products && products.map((product, index) => {
-              console.log(product)
               return (
                 <Card key={index} product={product} /> 
                 )

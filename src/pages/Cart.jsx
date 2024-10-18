@@ -27,20 +27,32 @@ const Cart = () => {
     <>
       <div className="min-h-screen max-w-screen flex flex-col justify-center items-center gap-5">
         <div className="w-1/2 min-h-1/2">
-          {cart &&
-            cart.cartItems.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  className="w-full min-h-1/4 flex flex-row justify-between items-center border-b-2 border-y-2 rounded-md p-3"
-                >
-                  <h1 className="text-xl font-bold">{item.name}</h1>
-                  <p>Size : {item.size}</p>
-                  <p>Quantity : {item.qty}</p>
-                  <p>Rs. {item.price}</p>
-                </div>
-              );
-            })}
+          {cart && (
+            <>
+              {cart.cartItems.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="w-full min-h-1/4 flex flex-row justify-between items-center border-b-2 border-y-2 rounded-md p-3"
+                  >
+                    <h1 className="text-xl font-bold">{item.name}</h1>
+                    <p>Size: {item.size}</p>
+                    <p>Quantity: {item.qty}</p>
+                    <p>Rs. {item.price}</p>
+                  </div>
+                );
+              })}
+              <div className="total-price">
+                <h2 className="text-xl font-bold">
+                  Total Price: Rs.{" "}
+                  {cart.cartItems.reduce(
+                    (total, item) => total + item.price,
+                    0
+                  )}
+                </h2>
+              </div>
+            </>
+          )}
         </div>
         <button className="btn btn-accent">Checkout</button>
       </div>
