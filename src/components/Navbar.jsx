@@ -149,7 +149,9 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <button>Orders</button>
+                    <Link to="orders">
+                      <button>Orders</button>
+                    </Link>
                   </li>
                   <li>
                     <button onClick={handleSignOut}>Logout</button>

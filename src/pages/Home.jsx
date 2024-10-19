@@ -39,8 +39,6 @@ const Home = () => {
           <button className="btn btn-outline btn-success ">Show More</button>
         </Link>
       </div>
-      <h1 className="font-bold text-4xl">Hello World</h1>
-      <button className="btn btn-primary">Primary</button>
     </>
   );
 };
